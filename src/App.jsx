@@ -1,44 +1,56 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { useState } from "react";
 import Navbar from "./components/Navbar";
+import CollegeCard from "./components/CollegeCard";
 
-import HomePage from "./pages/HomePage";
-import CollegeDetailsPage from "./pages/CollegeDetailsPage";
-import ComparePage from "./pages/ComparePage";
-import SavedPage from "./pages/SavedPage";
+export default function App() {
+  const [search, setSearch] = useState("");
 
-function App() {
+  const colleges = [
+    { name: "IIT Delhi", location: "Delhi" },
+    { name: "IIT Bombay", location: "Mumbai" },
+    { name: "NIT Warangal", location: "Telangana" },
+    { name: "BITS Pilani", location: "Rajasthan" },
+  ];
+
+  const filtered = colleges.filter((c) =>
+    c.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <BrowserRouter>
-
+    <div>
       <Navbar />
 
-      <Routes>
-
-        <Route
-          path="/"
-          element={<HomePage />}
+      <div style={{ padding: "16px" }}>
+        <input
+          type="text"
+          placeholder="Search colleges..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            padding: "10px",
+            width: "100%",
+            maxWidth: "300px",
+            marginBottom: "16px",
+          }}
         />
+      </div>
 
-        <Route
-          path="/college-details"
-          element={<CollegeDetailsPage />}
-        />
-
-        <Route
-          path="/compare"
-          element={<ComparePage />}
-        />
-
-        <Route
-          path="/saved"
-          element={<SavedPage />}
-        />
-
-      </Routes>
-
-    </BrowserRouter>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "16px",
+          padding: "16px",
+        }}
+      >
+        {filtered.map((college, index) => (
+          <CollegeCard
+            key={index}
+            name={college.name}
+            location={college.location}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
-
-export default App;

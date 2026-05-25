@@ -1,48 +1,24 @@
-import { Link } from "react-router-dom";
-
-function CollegeCard({ college }) {
+export default function CollegeCard({ name, location }) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition duration-300">
-
-      <img
-        src={college.image}
-        alt={college.name}
-        className="w-full h-52 object-cover"
-      />
-
-      <div className="p-5">
-
-        <h2 className="text-2xl font-bold mb-2">
-          {college.name}
-        </h2>
-
-        <p className="mb-2 text-gray-600">
-          📍 {college.location}
-        </p>
-
-        <p className="mb-2">
-          💰 Fees: {college.fees}
-        </p>
-
-        <p className="mb-2">
-          ⭐ Rating: {college.rating}
-        </p>
-
-        <p className="mb-4">
-          📈 Placements: {college.placements}
-        </p>
-
-        <Link
-          to="/college-details"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg inline-block"
-        >
-          View Details
-        </Link>
-
-      </div>
-
+    <div
+      style={{
+        border: "1px solid #e5e5e5",
+        padding: "16px",
+        borderRadius: "12px",
+        background: "#fff",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+        transition: "0.2s",
+        cursor: "pointer",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-4px)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0px)";
+      }}
+    >
+      <h3 style={{ marginBottom: "6px" }}>{name}</h3>
+      <p style={{ margin: 0, color: "gray" }}>{location}</p>
     </div>
   );
 }
-
-export default CollegeCard;
