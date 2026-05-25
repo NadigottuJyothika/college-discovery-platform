@@ -1,24 +1,55 @@
-export default function CollegeCard({ name, location }) {
+export default function CollegeCard({ college, onSelect, onCompare }) {
+  const getImage = (name) => {
+    switch (name) {
+      case "IIT Delhi":
+        return "/iit.jpg";
+      case "IIT Bombay":
+        return "/iiit.jpg";
+      case "NIT Warangal":
+        return "/nit.jpg";
+      case "BITS Pilani":
+        return "/bits.jpg";
+      default:
+        return "/iit.jpg";
+    }
+  };
+
   return (
     <div
+      onClick={() => onSelect(college)}
       style={{
-        border: "1px solid #e5e5e5",
-        padding: "16px",
-        borderRadius: "12px",
-        background: "#fff",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-        transition: "0.2s",
+        border: "1px solid #ddd",
+        padding: "14px",
+        borderRadius: "10px",
+        background: "white",
         cursor: "pointer",
       }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-4px)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0px)";
-      }}
     >
-      <h3 style={{ marginBottom: "6px" }}>{name}</h3>
-      <p style={{ margin: 0, color: "gray" }}>{location}</p>
+      <img
+        src={getImage(college.name)}
+        alt="college"
+        style={{
+          width: "100%",
+          height: "120px",
+          objectFit: "cover",
+          borderRadius: "8px",
+        }}
+      />
+
+      <h3>{college.name}</h3>
+      <p>📍 {college.location}</p>
+      <p>💰 ₹{college.fees}</p>
+      <p>⭐ {college.rating}</p>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onCompare(college);
+        }}
+        style={{ marginTop: "8px" }}
+      >
+        Compare
+      </button>
     </div>
   );
 }

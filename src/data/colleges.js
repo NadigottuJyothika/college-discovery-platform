@@ -1,46 +1,30 @@
-import iit from "../assets/iit.jpg";
-import nit from "../assets/nit.jpg";
-import iiit from "../assets/iiit.jpg";
-
-const colleges = [
+export const colleges = [
   {
     id: 1,
-    name: "IIT Hyderabad",
-    location: "Hyderabad",
-    fees: "₹2,00,000",
+    name: "IIT Delhi",
+    location: "Delhi",
+    fees: 250000,
     rating: 4.8,
-    placements: "92%",
-    image: iit,
-    courses: ["CSE", "ECE", "Mechanical"],
-    overview:
-      "Top engineering college with strong placements and research.",
   },
-
   {
     id: 2,
-    name: "NIT Warangal",
-    location: "Warangal",
-    fees: "₹1,50,000",
-    rating: 4.5,
-    placements: "88%",
-    image: nit,
-    courses: ["CSE", "Civil", "EEE"],
-    overview:
-      "National Institute known for engineering excellence.",
+    name: "IIT Bombay",
+    location: "Mumbai",
+    fees: 300000,
+    rating: 4.9,
   },
-
   {
     id: 3,
-    name: "IIIT Hyderabad",
-    location: "Hyderabad",
-    fees: "₹3,00,000",
-    rating: 4.9,
-    placements: "95%",
-    image: iiit,
-    courses: ["CSE", "AI", "Data Science"],
-    overview:
-      "Premier institute focused on AI and computer science.",
+    name: "NIT Warangal",
+    location: "Telangana",
+    fees: 150000,
+    rating: 4.5,
+  },
+  {
+    id: 4,
+    name: "BITS Pilani",
+    location: "Rajasthan",
+    fees: 500000,
+    rating: 4.6,
   },
 ];
-
-export default colleges;
